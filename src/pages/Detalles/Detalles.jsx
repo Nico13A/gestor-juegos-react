@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import getJuegoPorId from "../../services/getJuegoPorId.js";
 import Loading from "../../components/Loading/Loading.jsx";
+import Pie from "../../components/pie/pie.jsx";
+import Header from "../../components/header/header.jsx";
 
 const Detalles = () => {
   const { id } = useParams();
@@ -24,6 +26,7 @@ const Detalles = () => {
 
   return (
     <div className="w-full max-w-[960px] mx-auto p-6">
+      <Header/>
       {loading ? (
         <Loading />
       ) : !juego ? (
@@ -75,6 +78,7 @@ const Detalles = () => {
           </div>
         </div>
       )}
+      <Pie/>
     </div>
   );
 };
