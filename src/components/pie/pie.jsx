@@ -1,6 +1,6 @@
 const Pie = () => {
     return (
-        <div className="pie mt-8 bg-black text-white p-4 flex justify-between">
+        <div className="pie rounded-lg mt-8 bg-black text-white p-4 flex justify-between">
         <div className="redes w-1/2 flex flex-col justify-center items-center">
             <p>Facebook: Mi Gestor de juegos </p>
             <p>Twitter: miGestorJuegos</p>
