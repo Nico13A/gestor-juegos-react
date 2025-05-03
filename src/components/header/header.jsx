@@ -2,6 +2,7 @@ import Button from "../Button/Button"
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../const/routes";
 
+
 const Header = () => {
   const navigate = useNavigate();
   const HandleMenu = (menu) => {
@@ -18,13 +19,17 @@ const Header = () => {
 
 
   return (
-    <header className="mb-4 rounded-lg bg-black text-white py-3 px-6 flex flex-col items-center">
+    <header className="sticky top-0  mb-2 rounded-lg  bg-black text-white py-3 px-6 flex flex-col items-center"> 
     <h1 className="text-3xl font-bold mb-4">Mi Gestor de Juegos</h1>
         <nav className="w-full flex justify-center">
           <ul className="flex space-x-4 items-center">
             <li>
               <div className="flex items-center space-x-4">
-                <img onClick={() => HandleMenu("home")} src="/imagenes/logo.png" alt="Logo" className="w-10 h-10 "/>
+                <img onClick={() => HandleMenu("home")} 
+                  src="/imagenes/logo.png" 
+                  alt="Logo" 
+                  className="w-10 h-10 cursor-pointer"
+                />
                 <Button onClick={() => HandleMenu("home")} texto="Home" className="bg-gray-700 text-white px-6 py-2 rounded-lg hover:bg-gray-500"/>
               </div>
             </li>
@@ -34,6 +39,14 @@ const Header = () => {
             <li>
               <Button onClick={() => HandleMenu("favoritos")} texto="Favorito" className="bg-gray-700 text-white px-6 py-2 rounded-lg hover:bg-gray-500"/>
             </li>
+            <li>
+              {/* agregar idioma*/}
+              <select name="idioma" id="" 
+                className="bg-gray-700 text-white px-6 py-2 rounded-lg hover:bg-gray-500">
+                <option value="es">Español</option>
+                <option value="en">Inglés</option>
+            </select>
+              </li>
           </ul>
         </nav>
     </header>

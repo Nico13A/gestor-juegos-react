@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import Button from "../../components/Button/Button";
@@ -7,12 +7,38 @@ import { ROUTES } from "../../const/routes";
 const Card = ({ juego }) => {
     const [isFavorite, setIsFavorite] = useState(false);
     const navigate = useNavigate();
+const toggleFavorite = () => {
+    setIsFavorite((currentValue) => !currentValue);
+};
+/*/            Alfredo                 /*/
+const [favoritosGuardados,setFavoritosGuardados]=useState([]);
 
-    const toggleFavorite = () => {
-        setIsFavorite((currentValue) => !currentValue);
-    };
+useEffect(()=>{
+    let itemsFavoritos=JSON.parse(localStorage.getItem("favoritos")) || [];
+    itemsFavoritos.map((id)=>{
+        if (id===juego.id) {
+            setIsFavorite(true);
+        }
+    }
+    )
+},[])
 
-    const onClickNavigateHandler = () => {
+useEffect(()=>{
+    let nuevoFavorito=JSON.parse(localStorage.getItem("favoritos")) || [];
+    if (!isFavorite) {
+        nuevoFavorito = nuevoFavorito.filter((id) => id !== juego.id);
+    }
+    else{
+        nuevoFavorito.push(juego.id);
+    }
+    setFavoritosGuardados(nuevoFavorito);
+    localStorage.setItem("favoritos", JSON.stringify(nuevoFavorito));
+},[isFavorite])
+
+
+/*/            Fin Alfredo                 /*/
+
+const onClickNavigateHandler = () => {
         const rutaDetalle = ROUTES.detalles.replace(":id", juego.id);
         navigate(rutaDetalle);
     };

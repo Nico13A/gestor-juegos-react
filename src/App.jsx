@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home.jsx";
 import Detalles from "./pages/Detalles/Detalles.jsx";
-//import Favoritos from "./pages/Favoritos/Favoritos.jsx";
+import Favoritos from "./pages/Favoritos/Favoritos.jsx";
 import { ROUTES } from "./const/routes";
 import "./App.css";
 
@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route path={ROUTES.home} element={<Home />} />
         <Route path={ROUTES.detalles} element={<Detalles />} />
-        {/*<Route path={ROUTES.favoritos} element={<Favoritos />} />*/}
+        <Route path={ROUTES.favoritos} element={<Favoritos />} />
       </Routes>
     </BrowserRouter>
     
