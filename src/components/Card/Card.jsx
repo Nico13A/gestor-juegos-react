@@ -7,38 +7,36 @@ import { ROUTES } from "../../const/routes";
 const Card = ({ juego }) => {
     const [isFavorite, setIsFavorite] = useState(false);
     const navigate = useNavigate();
-const toggleFavorite = () => {
-    setIsFavorite((currentValue) => !currentValue);
-};
-/*/            Alfredo                 /*/
-const [favoritosGuardados,setFavoritosGuardados]=useState([]);
+    const toggleFavorite = () => {
+        setIsFavorite((currentValue) => !currentValue);
+    };
+    /*  *******    Alfredo    *******  */
+    const [favoritosGuardados, setFavoritosGuardados] = useState([]);
 
-useEffect(()=>{
-    let itemsFavoritos=JSON.parse(localStorage.getItem("favoritos")) || [];
-    itemsFavoritos.map((id)=>{
-        if (id===juego.id) {
-            setIsFavorite(true);
+    useEffect(() => {
+        let itemsFavoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+        itemsFavoritos.map((id) => {
+            if (id === juego.id) {
+                setIsFavorite(true);
+            }
         }
-    }
-    )
-},[])
+        )
+    }, [])
 
-useEffect(()=>{
-    let nuevoFavorito=JSON.parse(localStorage.getItem("favoritos")) || [];
-    if (!isFavorite) {
-        nuevoFavorito = nuevoFavorito.filter((id) => id !== juego.id);
-    }
-    else{
-        nuevoFavorito.push(juego.id);
-    }
-    setFavoritosGuardados(nuevoFavorito);
-    localStorage.setItem("favoritos", JSON.stringify(nuevoFavorito));
-},[isFavorite])
+    useEffect(() => {
+        let nuevoFavorito = JSON.parse(localStorage.getItem("favoritos")) || [];
+        if (!isFavorite) {
+            nuevoFavorito = nuevoFavorito.filter((id) => id !== juego.id);
+        }
+        else {
+            nuevoFavorito.push(juego.id);
+        }
+        setFavoritosGuardados(nuevoFavorito);
+        localStorage.setItem("favoritos", JSON.stringify(nuevoFavorito));
+    }, [isFavorite])
+    /*  *******  Fin Alfredo  *******  */
 
-
-/*/            Fin Alfredo                 /*/
-
-const onClickNavigateHandler = () => {
+    const onClickNavigateHandler = () => {
         const rutaDetalle = ROUTES.detalles.replace(":id", juego.id);
         navigate(rutaDetalle);
     };
@@ -55,10 +53,10 @@ const onClickNavigateHandler = () => {
                 <div className="flex justify-between items-center">
                     <Button
                         onClick={onClickNavigateHandler}
-                        className="text-sm text-blue-600 hover:text-blue-800 hover:underline cursor-pointer"
-                    >
-                        Ver detalles
-                    </Button>
+                        texto="Ver detalles"
+                        className="text-sm text-blue-600 hover:text-blue-800 hover:underline"
+                        padding="none"
+                    />
                     <FavoriteButton isFavorite={isFavorite} onClick={toggleFavorite} />
                 </div>
             </div>

@@ -26,7 +26,7 @@ const Juegos = () => {
   const anteriorPagina = () => setPagina((prev) => (prev > 1 ? prev - 1 : 1));
 
   return (
-    <main className="w-full max-w-[960px] mx-auto">
+    <main className="w-full max-w-[960px] mx-auto px-8">
       <h2 className="text-xl font-semibold mb-4">Lista de juegos</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -45,22 +45,19 @@ const Juegos = () => {
         <Button
           onClick={anteriorPagina}
           disabled={pagina === 1}
-          className="px-4 py-2 bg-[#676566] text-white rounded disabled:opacity-50 cursor-pointer hover:bg-[#4f4d4d] disabled:cursor-not-allowed disabled:hover:bg-[#676566]"
-        >
-          Anterior
-        </Button>
+          texto="Anterior"
+          className="text-white bg-[#676566] hover:bg-[#4f4d4d] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-[#676566]"
+        />
         <span className="text-lg font-medium">Página {pagina}</span>
         <Button
           onClick={siguientePagina}
-          className="px-4 py-2 bg-blue-600 text-white rounded cursor-pointer hover:bg-blue-700"
-        >
-          Siguiente
-        </Button>
+          texto="Siguiente"
+          className="text-white bg-blue-600 hover:bg-blue-700"
+        />
       </div>
     </main>
   );
 };
 
 export default Juegos;
-
 

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import getJuegoPorId from "../../services/getJuegoPorId";
 import Card from "../../components/Card/Card"
-import Header from "../../components/header/header";
-import Pie from "../../components/pie/pie";
+import Header from "../../components/Header/Header";
+import Pie from "../../components/Footer/Footer";
 const Favoritos = () => {
 
 const [juegos, setJuegos] = useState([]);
@@ -26,4 +26,5 @@ useEffect(() => {
         </div>
     )
   };
-export default Favoritos
+
+export default Favoritos;
