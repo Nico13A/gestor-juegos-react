@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import Button from "../../components/Button/Button";
 import { ROUTES } from "../../const/routes";
-import useFavoritos from "../../context/useFavoritos"; 
+import useFavoritos from "../../context/FavoritosContext/useFavoritos"; 
 
 const Card = ({ juego }) => {
   const navigate = useNavigate();
@@ -14,7 +14,8 @@ const Card = ({ juego }) => {
   };
 
   return (
-    <div className="bg-white rounded-md shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+<div className="bg-white rounded-md shadow-md overflow-hidden transform hover:scale-102 hover:shadow-lg transition-all duration-300">
+
       <img
         src={juego.background_image}
         alt={juego.name}

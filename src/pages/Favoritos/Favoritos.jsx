@@ -4,7 +4,8 @@ import Card from "../../components/Card/Card";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Loading from "../../components/Loading/Loading";
-import  useFavoritos  from "../../context/useFavoritos";
+import useFavoritos from "../../context/FavoritosContext/useFavoritos";
+import { HeartOff } from "lucide-react";
 
 const Favoritos = () => {
   const { favoritos } = useFavoritos();
@@ -35,19 +36,34 @@ const Favoritos = () => {
   }, [favoritos]);
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <div>
+
+      <main className="flex-grow px-4 pb-6 bg-gray-50 mb-4">
         {loading ? (
           <Loading />
         ) : juegos.length > 0 ? (
-          juegos.map((juego) => <Card key={juego.id} juego={juego} />)
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-2xl font-semibold md:text-3xl text-gray-800 mt-6 mb-6">
+              Lista de juegos favoritos
+            </h2>
+            <div className="flex flex-col gap-4">
+              {juegos.map((juego) => (
+                <Card key={juego.id} juego={juego} />
+              ))}
+            </div>
+          </div>
         ) : (
-          <p className="text-center py-10">No tenés juegos favoritos.</p>
+          <div className="flex flex-col items-center justify-center text-center text-gray-600 py-20">
+            <HeartOff className="w-16 h-16 mb-4 text-gray-300" />
+            <p className="text-lg">No tenés juegos favoritos guardados.</p>
+            <p className="text-sm mt-1 text-gray-400">Explorá y agregá juegos desde la página principal.</p>
+          </div>
         )}
-      </div>
+      </main>
+
       <Footer />
-    </>
+    </div>
   );
 };
 

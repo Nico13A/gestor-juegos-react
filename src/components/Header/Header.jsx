@@ -16,7 +16,7 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 mb-4 bg-gray-950 text-white px-8 h-32 flex items-center justify-between z-50">
-      
+
       <div className="flex items-center space-x-4">
         <img
           onClick={() => handleMenu("home")}
@@ -90,4 +90,5 @@ const Header = () => {
 };
 
 export default Header;
+
 

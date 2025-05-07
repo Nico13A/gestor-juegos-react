@@ -25,9 +25,9 @@ const Detalles = () => {
   const descripcionCorta = juego?.description_raw?.slice(0, 300) + "...";
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <div className="w-full max-w-[960px] mx-auto p-6 mb-4">
+      <main className="w-full max-w-[960px] mx-auto p-6 mb-4 flex-grow">
         {loading ? (
           <Loading />
         ) : !juego ? (
@@ -79,9 +79,9 @@ const Detalles = () => {
             </div>
           </div>
         )}
-      </div>
+      </main>
       <Footer />
-    </>
+    </div>
   );
 };
 

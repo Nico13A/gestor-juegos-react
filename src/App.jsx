@@ -27,12 +27,12 @@ import Home from "./pages/Home/Home.jsx";
 import Detalles from "./pages/Detalles/Detalles.jsx";
 import Favoritos from "./pages/Favoritos/Favoritos.jsx";
 import { ROUTES } from "./const/routes";
-import FavoritosProvider from "./context/FavoritosProvider.jsx";
+import ContextProviders from "./context/ContextProviders.jsx";
 import "./App.css";
 
 function App() {
   return (
-    <FavoritosProvider>
+    <ContextProviders>
       <BrowserRouter>
         <Routes>
           <Route path={ROUTES.home} element={<Home />} />
@@ -40,7 +40,7 @@ function App() {
           <Route path={ROUTES.favoritos} element={<Favoritos />} />
         </Routes>
       </BrowserRouter>
-    </FavoritosProvider>
+    </ContextProviders>
   );
 }
 

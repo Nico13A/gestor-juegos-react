@@ -4,11 +4,11 @@ import Header from "../../components/Header/Header";
 
 const Home = () => {
     return (
-        <>
+        <div className="flex flex-col min-h-screen">
             <Header/>
             <Juegos/>
             <Pie/>
-        </>
+        </div>
     );
 }
 
