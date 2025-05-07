@@ -25,7 +25,8 @@ i18n.use(initReactI18next).init({
         search:"Search game...",
         error_getting_games:"Error getting favorite games:",
         dont_have_any_games :"You don't have any favorite games saved.",
-        explore:"Explore and add games from the home page."
+        explore:"Explore and add games from the home page.",
+        loading:"Loading "
         } 
         
     },
@@ -51,7 +52,8 @@ i18n.use(initReactI18next).init({
         search:"Buscar juego...",
         error_getting_games:"Error al obtener juegos favoritos:",
         dont_have_any_games :"No tenés juegos favoritos guardados.",
-        explore:"Explorá y agregá juegos desde la página principal."
+        explore:"Explorá y agregá juegos desde la página principal.",
+        loading:"Cargando..."
         } 
     }
   },
