@@ -4,8 +4,10 @@ import getJuegoPorId from "../../services/getJuegoPorId.js";
 import Loading from "../../components/Loading/Loading.jsx";
 import Header from "../../components/Header/Header.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
+import { useTranslation } from "react-i18next";
 
 const Detalles = () => {
+  const { t }= useTranslation(); 
   const { id } = useParams();
   const [juego, setJuego] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -32,7 +34,7 @@ const Detalles = () => {
           <Loading />
         ) : !juego ? (
           <div className="text-center text-xl text-[#090605]">
-            <p>Juego no encontrado.</p>
+            <p>{("game_not_found")}</p>
           </div>
         ) : (
           <div className="bg-white shadow-xl rounded-xl overflow-hidden">
@@ -47,7 +49,7 @@ const Detalles = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-gray-700">
                 <div className="bg-[#D6DFE8] p-4 rounded-lg shadow-sm">
-                  <p className="font-semibold">Fecha de lanzamiento</p>
+                  <p className="font-semibold">{t("release_date")}</p>
                   <p>{juego.released}</p>
                 </div>
                 <div className="bg-[#D6DFE8] p-4 rounded-lg shadow-sm">
@@ -56,14 +58,14 @@ const Detalles = () => {
                 </div>
                 {juego.added && (
                   <div className="bg-[#D6DFE8] p-4 rounded-lg shadow-sm">
-                    <p className="font-semibold">Usuarios</p>
+                    <p className="font-semibold">{t("users")}</p>
                     <p>{juego.added.toLocaleString()}</p>
                   </div>
                 )}
               </div>
 
               <div className="mt-6">
-                <h2 className="text-2xl font-semibold mb-2 text-gray-800">Descripción</h2>
+                <h2 className="text-2xl font-semibold mb-2 text-gray-800">{t("description")}</h2>
                 <p className="text-gray-700 leading-relaxed">
                   {verMas ? juego.description_raw : descripcionCorta}
                 </p>
@@ -72,7 +74,7 @@ const Detalles = () => {
                     onClick={() => setVerMas(!verMas)}
                     className="cursor-pointer text-blue-600 hover:underline mt-2 hover:text-blue-800"
                   >
-                    {verMas ? "Mostrar menos" : "Leer más"}
+                    {verMas ? t("show_less") : t("read_more")}
                   </button>
                 )}
               </div>

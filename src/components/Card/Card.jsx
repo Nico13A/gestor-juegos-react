@@ -3,11 +3,14 @@ import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import Button from "../../components/Button/Button";
 import { ROUTES } from "../../const/routes";
 import useFavoritos from "../../context/FavoritosContext/useFavoritos"; 
+import { useTranslation } from "react-i18next";
 
 const Card = ({ juego }) => {
   const navigate = useNavigate();
   const { isFavorito, toggleFavorito } = useFavoritos(); 
 
+  const { t } = useTranslation();
+  
   const onClickNavigateHandler = () => {
     const rutaDetalle = ROUTES.detalles.replace(":id", juego.id);
     navigate(rutaDetalle);
@@ -26,7 +29,7 @@ const Card = ({ juego }) => {
         <div className="flex justify-between items-center">
           <Button
             onClick={onClickNavigateHandler}
-            texto="Ver detalles"
+            texto={t("see_details")}
             className="text-sm text-blue-600 hover:text-blue-800 hover:underline"
             padding="none"
           />

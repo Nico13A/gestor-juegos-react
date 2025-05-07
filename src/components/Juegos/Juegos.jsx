@@ -4,8 +4,10 @@ import Card from "../Card/Card.jsx";
 import Loading from "../Loading/Loading.jsx";
 import Button from "../Button/Button.jsx";
 import SearchBar from "../SearchBar/SearchBar.jsx";
+import { useTranslation } from "react-i18next";
 
 const Juegos = () => {
+  const { t } = useTranslation();
   const [juegos, setJuegos] = useState([]);
   const [pagina, setPagina] = useState(1);
   const [loading, setLoading] = useState(true);
@@ -42,7 +44,7 @@ const Juegos = () => {
       {totalJuegos > 0 && (
         <div className="mb-4 text-gray-700">
           <span>
-            Mostrando {juegos.length} de {totalJuegos} juegos
+            {t("showing")} {juegos.length} {t("of")} {totalJuegos} {t("games")}
           </span>
         </div>
       )}
@@ -55,7 +57,7 @@ const Juegos = () => {
         ) : juegos.length === 0 ? (
           <div className="col-span-full flex justify-center">
             <p className="bg-yellow-100 text-yellow-800 border border-yellow-300 rounded-md px-6 py-4 text-center text-base">
-              No se encontraron juegos que coincidan con tu búsqueda.
+              {t("no_search")}
             </p>
           </div>
 
@@ -69,14 +71,14 @@ const Juegos = () => {
         <Button
           onClick={() => setPagina((prev) => (prev > 1 ? prev - 1 : 1))}
           disabled={pagina === 1}
-          texto="Anterior"
+          texto={t("previous")}
           className="text-white bg-[#676566] hover:bg-[#4f4d4d] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-[#676566]"
         />
-        <span className="text-lg font-medium">Página {pagina}</span>
+        <span className="text-lg font-medium">{t("page")} {pagina}</span>
         <Button
           onClick={() => setPagina((prev) => prev + 1)}
           disabled={pagina * 18 >= totalJuegos}
-          texto="Siguiente"
+          texto={t("next")}
           className="text-white bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-blue-600"
         />
       </div>

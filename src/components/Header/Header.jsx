@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Button from "../Button/Button";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../const/routes";
 import { Menu, X } from "lucide-react";
-
+import { useTranslation } from "react-i18next";
+import i18n from "../../services/i18n";
 const Header = () => {
   const navigate = useNavigate();
   const [menuAbierto, setMenuAbierto] = useState(false);
+
+  const idioma=localStorage.getItem("idioma") || "es";
+  const { t }= useTranslation();
 
   const handleMenu = (menu) => {
     const ruta = menu === "favoritos" ? ROUTES.favoritos : ROUTES.home;
@@ -39,18 +43,23 @@ const Header = () => {
           <div className="absolute right-0 top-full bg-gray-900 p-4 rounded-lg shadow-lg space-y-3 w-40 z-50">
             <Button
               onClick={() => handleMenu("home")}
-              texto="Home"
+              texto={t("home")}
               className="text-white font-medium bg-gray-700 hover:bg-gray-500 rounded-lg w-full"
             />
             <Button
               onClick={() => handleMenu("favoritos")}
-              texto="Favorito"
+              texto={t("favorites")}
               className="text-white font-medium bg-gray-700 hover:bg-gray-500 rounded-lg w-full"
             />
-            <select
+            <select value={idioma}
               name="idioma"
-              className="text-white font-medium bg-gray-700 hover:bg-gray-500 cursor-pointer rounded-lg px-4 py-2 leading-none h-[40px] w-full"
-            >
+              className="bg-gray-700 text-white px-6 py-2 rounded-lg hover:bg-gray-500"
+              onChange={(e) => {
+                const nIdioma=e.target.value;
+                i18n.changeLanguage(nIdioma);
+                localStorage.setItem("idioma",nIdioma)
+                } //guardo idioma en localStorage
+              }>
               <option value="es">Español</option>
               <option value="en">Inglés</option>
             </select>
@@ -63,22 +72,27 @@ const Header = () => {
           <li>
             <Button
               onClick={() => handleMenu("home")}
-              texto="Home"
+              texto={t("home")}
               className="text-white font-medium bg-gray-700 hover:bg-gray-500 rounded-lg"
             />
           </li>
           <li>
             <Button
               onClick={() => handleMenu("favoritos")}
-              texto="Favoritos"
+              texto={t("favorites")}
               className="text-white font-medium bg-gray-700 hover:bg-gray-500 rounded-lg"
             />
           </li>
           <li>
-            <select
+          <select value={idioma}
               name="idioma"
-              className="text-white font-medium bg-gray-700 hover:bg-gray-500 cursor-pointer rounded-lg px-4 py-2 leading-none h-[40px]"
-            >
+              className="bg-gray-700 text-white px-6 py-2 rounded-lg hover:bg-gray-500"
+              onChange={(e) => {
+                const nIdioma=e.target.value;
+                i18n.changeLanguage(nIdioma);
+                localStorage.setItem("idioma",nIdioma)
+                } //guardo idioma en localStorage
+              }>
               <option value="es">Español</option>
               <option value="en">Inglés</option>
             </select>

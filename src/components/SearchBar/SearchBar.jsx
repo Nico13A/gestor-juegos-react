@@ -1,7 +1,9 @@
 import { Search } from "lucide-react";
 import Input from "../Input/Input.jsx";
+import { useTranslation } from "react-i18next";
 
 const SearchBar = ({ value, onChange, onSearch }) => {
+  const { t }=useTranslation();
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       onSearch();
@@ -14,7 +16,7 @@ const SearchBar = ({ value, onChange, onSearch }) => {
         value={value}
         onChange={onChange}
         onKeyDown={handleKeyDown}
-        placeholder="Buscar juego..."
+        placeholder={t("search")}
       />
       <button
         onClick={onSearch}
