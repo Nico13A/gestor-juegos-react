@@ -5,6 +5,7 @@ import { ROUTES } from "../../const/routes";
 import { Menu, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import i18n from "../../services/i18n";
+
 const Header = () => {
   const navigate = useNavigate();
   const [menuAbierto, setMenuAbierto] = useState(false);
@@ -53,12 +54,12 @@ const Header = () => {
             />
             <select value={idioma}
               name="idioma"
-              className="bg-gray-700 text-white px-6 py-2 rounded-lg hover:bg-gray-500"
+              className="text-white font-medium bg-gray-700 hover:bg-gray-500 cursor-pointer rounded-lg px-4 py-2 leading-none h-[40px] w-full"
               onChange={(e) => {
                 const nIdioma=e.target.value;
                 i18n.changeLanguage(nIdioma);
                 localStorage.setItem("idioma",nIdioma)
-                } //guardo idioma en localStorage
+                } 
               }>
               <option value="es">Español</option>
               <option value="en">Inglés</option>
@@ -86,12 +87,12 @@ const Header = () => {
           <li>
           <select value={idioma}
               name="idioma"
-              className="bg-gray-700 text-white px-6 py-2 rounded-lg hover:bg-gray-500"
+              className="text-white font-medium bg-gray-700 hover:bg-gray-500 cursor-pointer rounded-lg px-4 py-2 leading-none h-[40px]"
               onChange={(e) => {
                 const nIdioma=e.target.value;
                 i18n.changeLanguage(nIdioma);
                 localStorage.setItem("idioma",nIdioma)
-                } //guardo idioma en localStorage
+                }
               }>
               <option value="es">Español</option>
               <option value="en">Inglés</option>
